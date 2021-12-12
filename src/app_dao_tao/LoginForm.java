@@ -6,6 +6,11 @@
 package app_dao_tao;
 
 import javax.swing.ImageIcon;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -80,6 +85,11 @@ public class LoginForm extends javax.swing.JFrame {
 
         loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Login-icon-16.png"))); // NOI18N
         loginButton.setText("LOGIN");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Button-Close-icon-16.png"))); // NOI18N
         exitButton.setText("EXIT");
@@ -202,6 +212,33 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.userName.setText("");
     }//GEN-LAST:event_userNameMouseClicked
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        try {
+            String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=app";
+            String user = "sa";
+            String pass = "123456789";
+            Connection con  = DriverManager.getConnection(url, user, pass);
+            String sql = "Select * from dangnhap1 where tendangnhap=? and matkhau = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString (1, userName.getText());
+            pst.setString (2, password.getText());
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null , "UserName and Password Correct");
+            }else {
+                JOptionPane.showMessageDialog(null , "UserName and Password not Correct");
+                userName.setText("");
+                password.setText("");
+            }
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
