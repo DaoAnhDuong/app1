@@ -5,21 +5,17 @@
  */
 package app_dao_tao;
 
-import javax.swing.ImageIcon;
-
 /**
  *
- * @author Admin
+ * @author ADMIN
  */
-public class MainAdmin extends javax.swing.JFrame {
+public class MainGV extends javax.swing.JFrame {
 
     /**
-     * Creates new form MainAdmin
+     * Creates new form MainGV
      */
-    public MainAdmin() {
+    public MainGV() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("/icon/main.png")).getImage());
-        setTitle("HUS-App");
     }
 
     /**
@@ -31,24 +27,16 @@ public class MainAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         logOut = new javax.swing.JMenuItem();
         exitMenu = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        qlsvMenu = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-
-        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hoc-phi-Dh-KHTN-Ha-noi.jpeg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hoc-phi-Dh-KHTN-Ha-noi.jpeg"))); // NOI18N
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-setting-40.png"))); // NOI18N
         jMenu1.setText("Tài Khoản");
@@ -73,40 +61,9 @@ public class MainAdmin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-bag-40.png"))); // NOI18N
-        jMenu2.setText("Quản Lí Đào Tạo ");
-
-        qlsvMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-student-24.png"))); // NOI18N
-        qlsvMenu.setText("Quản Lí Sinh Viên");
-        qlsvMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                qlsvMenuActionPerformed(evt);
-            }
-        });
-        jMenu2.add(qlsvMenu);
-
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-teacher-24.png"))); // NOI18N
-        jMenuItem5.setText("Quản Lí Giáo Viên");
-        jMenu2.add(jMenuItem5);
-
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-school-centralize-lab-for-all-subject-student-24.png"))); // NOI18N
-        jMenuItem6.setText("Quản Lí Môn Học");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem6);
-
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-class-24.png"))); // NOI18N
-        jMenuItem7.setText("Quản Lí Lớp Học");
-        jMenu2.add(jMenuItem7);
-
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-calendar-40.png"))); // NOI18N
+        jMenu2.setText("Xem Lịch Dạy Học");
         jMenuBar1.add(jMenu2);
-
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-search-40.png"))); // NOI18N
-        jMenu3.setText("Tìm Kiếm");
-        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -114,21 +71,15 @@ public class MainAdmin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1057, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
         // TODO add your handling code here:
@@ -140,12 +91,6 @@ public class MainAdmin extends javax.swing.JFrame {
         dispose();
         new LoginForm().setVisible(true);
     }//GEN-LAST:event_logOutActionPerformed
-
-    private void qlsvMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qlsvMenuActionPerformed
-        // TODO add your handling code here:
-        new QLsinhvien().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_qlsvMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,36 +109,30 @@ public class MainAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainGV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainGV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainGV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainGV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainAdmin().setVisible(true);
+                new MainGV().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem exitMenu;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem logOut;
-    private javax.swing.JMenuItem qlsvMenu;
     // End of variables declaration//GEN-END:variables
 }

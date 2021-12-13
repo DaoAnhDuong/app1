@@ -10,6 +10,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -215,6 +218,8 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
+        String nguoidung = userName.getText();
+        String matkhau = password.getText();
         try {
             String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
             String url = "jdbc:sqlserver://localhost:1433;databaseName=app";
@@ -225,17 +230,32 @@ public class LoginForm extends javax.swing.JFrame {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString (1, userName.getText());
             pst.setString (2, password.getText());
+            
             ResultSet rs = pst.executeQuery();
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(null , "UserName and Password Correct");
-            }else {
+            if (rs.next()) { 
+                if (nguoidung.substring(0, 2).equals("ad")){
+                    JOptionPane.showMessageDialog(null , "UserName and Password Correct");  
+                    new MainAdmin().setVisible(true);
+                    dispose();
+                }
+                if (nguoidung.substring(0, 2).equals("SV")) {
+                    JOptionPane.showMessageDialog(null , "UserName and Password Correct");  
+                    new MainSV().setVisible(true);
+                    dispose();
+                } 
+                if (nguoidung.substring(0, 2).equals("GV")) {
+                    JOptionPane.showMessageDialog(null , "UserName and Password Correct");  
+                    new MainGV().setVisible(true);
+                    dispose();
+                }
+            } else {
                 JOptionPane.showMessageDialog(null , "UserName and Password not Correct");
                 userName.setText("");
                 password.setText("");
-            }
+            }        
             con.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);            
         }
         
     }//GEN-LAST:event_loginButtonActionPerformed
