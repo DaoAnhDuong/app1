@@ -39,7 +39,7 @@ public class MainAdmin extends javax.swing.JFrame {
         exitMenu = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         qlsvMenu = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        qlgvMenu = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -52,7 +52,9 @@ public class MainAdmin extends javax.swing.JFrame {
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-setting-40.png"))); // NOI18N
         jMenu1.setText("Tài Khoản");
+        jMenu1.setPreferredSize(new java.awt.Dimension(145, 32));
 
+        logOut.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         logOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-log-out-16.png"))); // NOI18N
         logOut.setText("Đăng xuất");
         logOut.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +64,7 @@ public class MainAdmin extends javax.swing.JFrame {
         });
         jMenu1.add(logOut);
 
+        exitMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         exitMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-power-16.png"))); // NOI18N
         exitMenu.setText("Thoát");
         exitMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +78,9 @@ public class MainAdmin extends javax.swing.JFrame {
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-bag-40.png"))); // NOI18N
         jMenu2.setText("Quản Lí Đào Tạo ");
+        jMenu2.setPreferredSize(new java.awt.Dimension(145, 32));
 
+        qlsvMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_DOWN_MASK));
         qlsvMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-student-24.png"))); // NOI18N
         qlsvMenu.setText("Quản Lí Sinh Viên");
         qlsvMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -85,10 +90,17 @@ public class MainAdmin extends javax.swing.JFrame {
         });
         jMenu2.add(qlsvMenu);
 
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-teacher-24.png"))); // NOI18N
-        jMenuItem5.setText("Quản Lí Giáo Viên");
-        jMenu2.add(jMenuItem5);
+        qlgvMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        qlgvMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-teacher-24.png"))); // NOI18N
+        qlgvMenu.setText("Quản Lí Giáo Viên");
+        qlgvMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                qlgvMenuActionPerformed(evt);
+            }
+        });
+        jMenu2.add(qlgvMenu);
 
+        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-school-centralize-lab-for-all-subject-student-24.png"))); // NOI18N
         jMenuItem6.setText("Quản Lí Môn Học");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +110,7 @@ public class MainAdmin extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem6);
 
+        jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-class-24.png"))); // NOI18N
         jMenuItem7.setText("Quản Lí Lớp Học");
         jMenu2.add(jMenuItem7);
@@ -106,6 +119,7 @@ public class MainAdmin extends javax.swing.JFrame {
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-search-40.png"))); // NOI18N
         jMenu3.setText("Tìm Kiếm");
+        jMenu3.setPreferredSize(new java.awt.Dimension(145, 32));
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -146,6 +160,12 @@ public class MainAdmin extends javax.swing.JFrame {
         new QLsinhvien().setVisible(true);
         dispose();
     }//GEN-LAST:event_qlsvMenuActionPerformed
+
+    private void qlgvMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qlgvMenuActionPerformed
+        // TODO add your handling code here:
+        new QLgiaovien().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_qlgvMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,10 +210,10 @@ public class MainAdmin extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem logOut;
+    private javax.swing.JMenuItem qlgvMenu;
     private javax.swing.JMenuItem qlsvMenu;
     // End of variables declaration//GEN-END:variables
 }
