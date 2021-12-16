@@ -40,7 +40,7 @@ public class MainAdmin extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         qlsvMenu = new javax.swing.JMenuItem();
         qlgvMenu = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        qlmhMenu = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
 
@@ -100,15 +100,15 @@ public class MainAdmin extends javax.swing.JFrame {
         });
         jMenu2.add(qlgvMenu);
 
-        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-school-centralize-lab-for-all-subject-student-24.png"))); // NOI18N
-        jMenuItem6.setText("Quản Lí Môn Học");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        qlmhMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        qlmhMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-school-centralize-lab-for-all-subject-student-24.png"))); // NOI18N
+        qlmhMenu.setText("Quản Lí Môn Học");
+        qlmhMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                qlmhMenuActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem6);
+        jMenu2.add(qlmhMenu);
 
         jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-class-24.png"))); // NOI18N
@@ -140,9 +140,11 @@ public class MainAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void qlmhMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qlmhMenuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+        new QLmonhoc().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_qlmhMenuActionPerformed
 
     private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
         // TODO add your handling code here:
@@ -210,10 +212,10 @@ public class MainAdmin extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem logOut;
     private javax.swing.JMenuItem qlgvMenu;
+    private javax.swing.JMenuItem qlmhMenu;
     private javax.swing.JMenuItem qlsvMenu;
     // End of variables declaration//GEN-END:variables
 }
