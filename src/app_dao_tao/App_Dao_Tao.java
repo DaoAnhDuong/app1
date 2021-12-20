@@ -16,7 +16,8 @@ public class App_Dao_Tao {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new LoginForm().setVisible(true);
+        LoginForm g=new LoginForm();
+         g.setVisible(true);
     }
     
 }

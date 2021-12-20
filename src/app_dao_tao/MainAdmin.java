@@ -5,6 +5,9 @@
  */
 package app_dao_tao;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -158,8 +161,12 @@ public class MainAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_logOutActionPerformed
 
     private void qlsvMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qlsvMenuActionPerformed
-        // TODO add your handling code here:
-        new QLsinhvien().setVisible(true);
+        try {
+            // TODO add your handling code here:
+            new QLsinhvien().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
         dispose();
     }//GEN-LAST:event_qlsvMenuActionPerformed
 
