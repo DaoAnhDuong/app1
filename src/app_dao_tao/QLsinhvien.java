@@ -5,11 +5,10 @@
  */
 package app_dao_tao;
 
-import Class.SinhVien;
+import Class.Sinhvien;
 import Modify.SinhvienModify;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -30,19 +29,21 @@ import javax.swing.table.DefaultTableModel;
  * @author ADMIN
  */
 public class QLsinhvien extends javax.swing.JFrame {
+
     DefaultTableModel tableModel;
-    List<SinhVien> studentList = new ArrayList<>();
-      int selectedindex=-1;
+    List<Sinhvien> studentList = new ArrayList<>();
+    private int selectedindex;
+
     /**
      * Creates new form QLsinhvien
      */
-    public QLsinhvien()  {
+    public QLsinhvien() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/icon/main.png")).getImage());
         setTitle("HUS-App");
-        tableModel=(DefaultTableModel) student.getModel();
-                showStudent();
-               student.addMouseListener(new MouseListener () {
+        tableModel = (DefaultTableModel) student.getModel();
+        showStudent();
+        /* student.addMouseListener(new MouseListener () {
             @Override
             public void mouseClicked(MouseEvent e) {
                 
@@ -50,7 +51,17 @@ public class QLsinhvien extends javax.swing.JFrame {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                  selectedindex=student.getSelectedRowCount();
+                System.out.println(student.getSelectedRowCount());
+               selectedindex=student.getSelectedRowCount();
+                 //System.out.println(selectedindex);
+        if(selectedindex>=0)
+        {
+            msvText.setText(studentList.get(selectedindex).getMaSinhVien());
+            hovatenTtext.setText(studentList.get(selectedindex).getHoVaTen());
+            ngaysinhText.setText(studentList.get(selectedindex).getNgaySinh());
+           diachiText.setText(studentList.get(selectedindex).getDiaChi());
+            gioitinhCombo.setSelectedItem(studentList.get(selectedindex).getGioiTinh());
+        }
             }
 
             @Override
@@ -67,18 +78,19 @@ public class QLsinhvien extends javax.swing.JFrame {
             public void mouseExited(MouseEvent e) {
                
             }
-        }  );
+        }  );*/
     }
-     private void showStudent() {
-      List<SinhVien>studentList = SinhvienModify.findAll();
-        
+
+    private void showStudent() {
+        studentList = SinhvienModify.findAll();
+
         tableModel.setRowCount(0);
-        
-        studentList.forEach((qlSV1) -> {
-            tableModel.addRow(new Object[] {tableModel.getRowCount() + 1, qlSV1.getMaSinhVien(), 
-                qlSV1.getHoVaTen(), qlSV1.getNgaySinh(), qlSV1.getDiaChi(),qlSV1.getGioiTinh()});
+
+        studentList.forEach(sinhvien -> {
+            tableModel.addRow(new Object[]{sinhvien.getMaSinhVien(), sinhvien.getHoVaTen(), sinhvien.getNgaySinh(), sinhvien.getDiaChi(), sinhvien.getGioiTinh()});
         });
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,7 +120,7 @@ public class QLsinhvien extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         exitLabel = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
+        timkiemField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         ngaysinhText = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
@@ -127,7 +139,7 @@ public class QLsinhvien extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 854, Short.MAX_VALUE)
                 .addGap(144, 144, 144))
         );
         jPanel2Layout.setVerticalGroup(
@@ -145,7 +157,7 @@ public class QLsinhvien extends javax.swing.JFrame {
 
         jLabel5.setText("Giới tính");
 
-        gioitinhCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
+        gioitinhCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ", "bê đê" }));
         gioitinhCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gioitinhComboActionPerformed(evt);
@@ -162,6 +174,11 @@ public class QLsinhvien extends javax.swing.JFrame {
 
         suaButton.setBackground(new java.awt.Color(0, 255, 0));
         suaButton.setText("Sửa");
+        suaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                suaButtonActionPerformed(evt);
+            }
+        });
 
         xoaButton.setBackground(new java.awt.Color(0, 255, 255));
         xoaButton.setText("Xóa");
@@ -207,7 +224,7 @@ public class QLsinhvien extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("(Tìm kiếm sinh viên theo mã lớp học)");
+        jLabel8.setText("(Tìm kiếm sinh viên theo mã sinh viên)");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -230,7 +247,7 @@ public class QLsinhvien extends javax.swing.JFrame {
                     .addComponent(ngaysinhText))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
+                        .addGap(140, 140, 140)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(luuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(suaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -238,9 +255,9 @@ public class QLsinhvien extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(xoaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lammoiButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(164, Short.MAX_VALUE))
+                        .addContainerGap(182, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 372, Short.MAX_VALUE)
                         .addComponent(exitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,7 +266,7 @@ public class QLsinhvien extends javax.swing.JFrame {
                 .addGap(194, 194, 194)
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(timkiemField, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -260,7 +277,7 @@ public class QLsinhvien extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timkiemField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -293,7 +310,7 @@ public class QLsinhvien extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(ngaysinhText, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
+                        .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(diachiText, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -307,30 +324,40 @@ public class QLsinhvien extends javax.swing.JFrame {
 
         student.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Stt", "Mã Sinh Viên", "Họ và Tên", "Ngày Sinh", "Địa chỉ", "Giới tính"
+                "Mã Sinh Viên", "Họ và Tên", "Ngày Sinh", "Địa chỉ", "Giới tính"
             }
         ));
+        student.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                studentMousePressed(evt);
+            }
+        });
+        student.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                studentKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(student);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -341,7 +368,7 @@ public class QLsinhvien extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -368,7 +395,11 @@ public class QLsinhvien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+       if(timkiemField.getText().length()>0)
+       {
+           studentList=SinhvienModify.findbyMSV(timkiemField.getText());
+           showStudent();
+       }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void exitLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitLabelMouseClicked
@@ -379,10 +410,10 @@ public class QLsinhvien extends javax.swing.JFrame {
 
     private void lammoiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lammoiButtonActionPerformed
         msvText.setText("");
-       hovatenTtext.setText("");
-       ngaysinhText.setText("");
-       diachiText.setText("");
-       gioitinhCombo.setSelectedIndex(0); 
+        hovatenTtext.setText("");
+        ngaysinhText.setText("");
+        diachiText.setText("");
+        gioitinhCombo.setSelectedIndex(0);
     }//GEN-LAST:event_lammoiButtonActionPerformed
 
     private void gioitinhComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gioitinhComboActionPerformed
@@ -392,29 +423,65 @@ public class QLsinhvien extends javax.swing.JFrame {
     private void luuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_luuButtonActionPerformed
         String msv = msvText.getText();
         String hovaten = hovatenTtext.getText();
-        String ngaysinh =ngaysinhText.getText();
+        String ngaysinh = ngaysinhText.getText();
         String diachi = diachiText.getText();
         String gioitinh = gioitinhCombo.getSelectedItem().toString();
-        
-        SinhVien std = new SinhVien(msv, hovaten, ngaysinh,diachi,gioitinh);
-        
+
+        Sinhvien std = new Sinhvien(msv, hovaten, ngaysinh, diachi, gioitinh);
+
         SinhvienModify.insert(std);
-        
+
         showStudent();
+        msvText.setText("");
+        hovatenTtext.setText("");
+        ngaysinhText.setText("");
+        diachiText.setText("");
+        gioitinhCombo.setSelectedIndex(0);
     }//GEN-LAST:event_luuButtonActionPerformed
 
     private void xoaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoaButtonActionPerformed
-      
-        System.out.println(selectedindex);
-        if(this.selectedindex!=-1)
-        {
-            SinhVien std=studentList.get(selectedindex);
-            int option=JOptionPane.showConfirmDialog(this, "Do you want to delete?","thông báo",JOptionPane.YES_NO_OPTION);
-            System.out.println("option: "+option);
-           
-        }
+
         
+        if (student.getSelectedRow() >= 0) {
+            Sinhvien std = studentList.get(student.getSelectedRow());
+            int option = JOptionPane.showConfirmDialog(this, "Do you want to delete?", "thông báo", JOptionPane.YES_NO_OPTION);
+            System.out.println("option: " + option);
+            if (option == 0) {
+                SinhvienModify.delete(std.getMaSinhVien());
+                showStudent();
+            }
+        }
+
     }//GEN-LAST:event_xoaButtonActionPerformed
+
+    private void suaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suaButtonActionPerformed
+        if(student.getSelectedRow() >= 0){
+        String msv = msvText.getText();
+        String hovaten = hovatenTtext.getText();
+        String ngaysinh = ngaysinhText.getText();
+        String diachi = diachiText.getText();
+        String gioitinh = gioitinhCombo.getSelectedItem().toString();
+
+        Sinhvien std = new Sinhvien(msv, hovaten, ngaysinh, diachi, gioitinh);
+
+        SinhvienModify.update(std);
+
+        showStudent();}
+    }//GEN-LAST:event_suaButtonActionPerformed
+
+    private void studentKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_studentKeyPressed
+        
+
+     }//GEN-LAST:event_studentKeyPressed
+
+    private void studentMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentMousePressed
+        System.out.println(student.getSelectedRow());
+        msvText.setText(student.getValueAt(student.getSelectedRow(), 0).toString());
+        hovatenTtext.setText(student.getValueAt(student.getSelectedRow(), 1).toString());
+        ngaysinhText.setText(student.getValueAt(student.getSelectedRow(), 2).toString());
+      diachiText.setText(student.getValueAt(student.getSelectedRow(), 3).toString());
+        gioitinhCombo.setSelectedItem(student.getValueAt(student.getSelectedRow(), 4).toString());
+    }//GEN-LAST:event_studentMousePressed
 
     /**
      * @param args the command line arguments
@@ -446,11 +513,11 @@ public class QLsinhvien extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-              
-                    new QLsinhvien().setVisible(true);
-                } 
+
+                new QLsinhvien().setVisible(true);
             }
-       );
+        }
+        );
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -472,13 +539,13 @@ public class QLsinhvien extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JButton lammoiButton;
     private javax.swing.JButton luuButton;
     private javax.swing.JTextField msvText;
     private javax.swing.JTextField ngaysinhText;
     private javax.swing.JTable student;
     private javax.swing.JButton suaButton;
+    private javax.swing.JTextField timkiemField;
     private javax.swing.JButton xoaButton;
     // End of variables declaration//GEN-END:variables
 }

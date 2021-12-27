@@ -60,6 +60,9 @@
               <Dimension value="[145, 32]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu2ActionPerformed"/>
+          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="qlsvMenu">
               <Properties>

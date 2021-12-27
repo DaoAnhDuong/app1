@@ -82,6 +82,11 @@ public class MainAdmin extends javax.swing.JFrame {
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-bag-40.png"))); // NOI18N
         jMenu2.setText("Quản Lí Đào Tạo ");
         jMenu2.setPreferredSize(new java.awt.Dimension(145, 32));
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
 
         qlsvMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_DOWN_MASK));
         qlsvMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-student-24.png"))); // NOI18N
@@ -161,20 +166,22 @@ public class MainAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_logOutActionPerformed
 
     private void qlsvMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qlsvMenuActionPerformed
-        try {
+      
             // TODO add your handling code here:
             new QLsinhvien().setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(MainAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        }
+         
         dispose();
     }//GEN-LAST:event_qlsvMenuActionPerformed
-
+        
     private void qlgvMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qlgvMenuActionPerformed
         // TODO add your handling code here:
         new QLgiaovien().setVisible(true);
         dispose();
     }//GEN-LAST:event_qlgvMenuActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu2ActionPerformed
 
     /**
      * @param args the command line arguments
