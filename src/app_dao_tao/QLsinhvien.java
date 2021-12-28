@@ -9,6 +9,11 @@ import Class.Sinhvien;
 import Modify.SinhvienModify;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -432,6 +437,46 @@ public class QLsinhvien extends javax.swing.JFrame {
         SinhvienModify.insert(std);
 
         showStudent();
+        
+     FileOutputStream fos = null;
+        
+      /*  try {
+            fos = new FileOutputStream("sv.csv", true);
+            
+            //Lưu dữ liệu
+            for (Sinhvien diem : studentList) {
+                String line = diem.getFileLine();
+                byte[] b = line.getBytes("utf-8");
+                fos.write(b);
+                
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(QLsinhvien.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(QLsinhvien.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(QLsinhvien.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            if (fos !=null){
+                try {
+                    fos.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(QLsinhvien.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }*/
+      try{
+          
+           FileWriter writer=new FileWriter("sv.csv");
+            for(Sinhvien email:studentList){
+              writer.write(email.toString()+"\n");}
+              writer.close();
+        }
+        catch(IOException e)
+        {
+            System.out.println("An error occured");
+            e.printStackTrace();
+        }
         msvText.setText("");
         hovatenTtext.setText("");
         ngaysinhText.setText("");
