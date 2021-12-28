@@ -5,6 +5,8 @@
  */
 package app_dao_tao;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author ADMIN
@@ -16,6 +18,8 @@ public class MainGV extends javax.swing.JFrame {
      */
     public MainGV() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/icon/main.png")).getImage());
+        setTitle("HUS-App");
     }
 
     /**
@@ -32,7 +36,8 @@ public class MainGV extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         logOut = new javax.swing.JMenuItem();
         exitMenu = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        XemLichDay = new javax.swing.JMenu();
+        DangKiDay = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,6 +46,7 @@ public class MainGV extends javax.swing.JFrame {
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-setting-40.png"))); // NOI18N
         jMenu1.setText("Tài Khoản");
 
+        logOut.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         logOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-log-out-16.png"))); // NOI18N
         logOut.setText("Đăng xuất");
         logOut.addActionListener(new java.awt.event.ActionListener() {
@@ -50,6 +56,7 @@ public class MainGV extends javax.swing.JFrame {
         });
         jMenu1.add(logOut);
 
+        exitMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         exitMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-power-16.png"))); // NOI18N
         exitMenu.setText("Thoát");
         exitMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -61,9 +68,23 @@ public class MainGV extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-calendar-40.png"))); // NOI18N
-        jMenu2.setText("Xem Lịch Dạy Học");
-        jMenuBar1.add(jMenu2);
+        XemLichDay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-calendar-40.png"))); // NOI18N
+        XemLichDay.setText("Xem Lịch Dạy Học");
+        XemLichDay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                XemLichDayMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(XemLichDay);
+
+        DangKiDay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-bag-40.png"))); // NOI18N
+        DangKiDay.setText("Đăng Kí Dạy");
+        DangKiDay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DangKiDayMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(DangKiDay);
 
         setJMenuBar(jMenuBar1);
 
@@ -91,6 +112,18 @@ public class MainGV extends javax.swing.JFrame {
         dispose();
         new LoginForm().setVisible(true);
     }//GEN-LAST:event_logOutActionPerformed
+
+    private void XemLichDayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XemLichDayMouseClicked
+        // TODO add your handling code here:
+        new LichDay().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_XemLichDayMouseClicked
+
+    private void DangKiDayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DangKiDayMouseClicked
+        // TODO add your handling code here:
+        new DangKiDay().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_DangKiDayMouseClicked
 
     /**
      * @param args the command line arguments
@@ -128,10 +161,11 @@ public class MainGV extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu DangKiDay;
+    private javax.swing.JMenu XemLichDay;
     private javax.swing.JMenuItem exitMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem logOut;
     // End of variables declaration//GEN-END:variables

@@ -5,16 +5,10 @@
  */
 package app_dao_tao;
 
-
-import Class.Sinhvien;
+import Class.SinhVien;
 import Modify.SinhvienModify;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -37,7 +31,7 @@ import javax.swing.table.DefaultTableModel;
 public class QLsinhvien extends javax.swing.JFrame {
 
     DefaultTableModel tableModel;
-    List<Sinhvien> studentList = new ArrayList<>();
+    List<SinhVien> studentList = new ArrayList<>();
     private int selectedindex;
 
     /**
@@ -309,7 +303,7 @@ public class QLsinhvien extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(suaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lammoiButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                         .addComponent(exitLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
@@ -324,7 +318,7 @@ public class QLsinhvien extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(gioitinhCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 28, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(24, 24, 24))
         );
 
@@ -433,51 +427,11 @@ public class QLsinhvien extends javax.swing.JFrame {
         String diachi = diachiText.getText();
         String gioitinh = gioitinhCombo.getSelectedItem().toString();
 
-        Sinhvien std = new Sinhvien(msv, hovaten, ngaysinh, diachi, gioitinh);
+        SinhVien std = new SinhVien(msv, hovaten, ngaysinh, diachi, gioitinh);
 
         SinhvienModify.insert(std);
 
         showStudent();
-        
-     FileOutputStream fos = null;
-        
-      /*  try {
-            fos = new FileOutputStream("sv.csv", true);
-            
-            //Lưu dữ liệu
-            for (SinhVien diem : studentList) {
-                String line = diem.getFileLine();
-                byte[] b = line.getBytes("utf-8");
-                fos.write(b);
-                
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(QLsinhvien.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(QLsinhvien.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(QLsinhvien.class.getName()).log(Level.SEVERE, null, ex);
-        }finally {
-            if (fos !=null){
-                try {
-                    fos.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(QLsinhvien.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }*/
-      try{
-          
-           FileWriter writer=new FileWriter("sv.csv");
-            for(Sinhvien email:studentList){
-              writer.write(email.toString()+"\n");}
-              writer.close();
-        }
-        catch(IOException e)
-        {
-            System.out.println("An error occured");
-            e.printStackTrace();
-        }
         msvText.setText("");
         hovatenTtext.setText("");
         ngaysinhText.setText("");
@@ -489,7 +443,7 @@ public class QLsinhvien extends javax.swing.JFrame {
 
         
         if (student.getSelectedRow() >= 0) {
-            Sinhvien std = studentList.get(student.getSelectedRow());
+            SinhVien std = studentList.get(student.getSelectedRow());
             int option = JOptionPane.showConfirmDialog(this, "Do you want to delete?", "thông báo", JOptionPane.YES_NO_OPTION);
             System.out.println("option: " + option);
             if (option == 0) {
@@ -508,7 +462,7 @@ public class QLsinhvien extends javax.swing.JFrame {
         String diachi = diachiText.getText();
         String gioitinh = gioitinhCombo.getSelectedItem().toString();
 
-        Sinhvien std = new Sinhvien(msv, hovaten, ngaysinh, diachi, gioitinh);
+        SinhVien std = new SinhVien(msv, hovaten, ngaysinh, diachi, gioitinh);
 
         SinhvienModify.update(std);
 

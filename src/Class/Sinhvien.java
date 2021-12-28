@@ -9,16 +9,16 @@ package Class;
  *
  * @author Admin
  */
-public class Sinhvien {
-    private int STt;
+public class SinhVien {
+    private int Id;
     private String MaSinhVien;
     private String HoVaTen;
     private String NgaySinh;
     private String DiaChi;
     private String GioiTinh;
 
-    public Sinhvien(int STt, String MaSinhVien, String HoVaTen, String NgaySinh, String DiaChi, String GioiTinh) {
-        this.STt = STt;
+    public SinhVien(int Id, String MaSinhVien, String HoVaTen, String NgaySinh, String DiaChi, String GioiTinh) {
+        this.Id = Id;
         this.MaSinhVien = MaSinhVien;
         this.HoVaTen = HoVaTen;
         this.NgaySinh = NgaySinh;
@@ -26,10 +26,7 @@ public class Sinhvien {
         this.GioiTinh = GioiTinh;
     }
 
-   
-
-    
-    public Sinhvien(String MaSinhVien, String HoVaTen, String NgaySinh, String DiaChi, String GioiTinh) {
+    public SinhVien(String MaSinhVien, String HoVaTen, String NgaySinh, String DiaChi, String GioiTinh) {
         this.MaSinhVien = MaSinhVien;
         this.HoVaTen = HoVaTen;
         this.NgaySinh = NgaySinh;
@@ -37,15 +34,13 @@ public class Sinhvien {
         this.GioiTinh = GioiTinh;
     }
 
-    public int getSTt() {
-        return STt;
+    public int getId() {
+        return Id;
     }
 
-    public void setSTt(int STt) {
-        this.STt = STt;
+    public void setId(int Id) {
+        this.Id = Id;
     }
-
-    
 
     public String getMaSinhVien() {
         return MaSinhVien;
@@ -87,17 +82,6 @@ public class Sinhvien {
         this.GioiTinh = GioiTinh;
     }
 
-    @Override
-    public String toString() {
-        return MaSinhVien+","+HoVaTen+","+NgaySinh+","+DiaChi+","+GioiTinh+"\n";
-        
-    }
-
-    public String getFileLine() {
-        return MaSinhVien+","+HoVaTen+","+NgaySinh+","+DiaChi+","+GioiTinh+"\n";
-    }
-
-   
     
 
     

@@ -5,8 +5,7 @@
  */
 package Modify;
 
-import Class.Sinhvien;
-import Class.Sinhvien;
+import Class.SinhVien;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,18 +23,18 @@ import java.util.logging.Logger;
  * @author Admin
  */
 public class SinhvienModify {
-    public static List<Sinhvien> findAll() {
-        List<Sinhvien> studentList=new ArrayList<>(); 
+    public static List<SinhVien> findAll() {
+        List<SinhVien> studentList=new ArrayList<>(); 
         String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         Connection con = null;
         Statement statement=null;
         try {
-            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=app", "sa", "123456789");
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=app1", "sa", "123456789");
             String sql = "select * from qlSV1";
             statement=con.createStatement();
             ResultSet resultSet=statement.executeQuery(sql);
             while(resultSet.next()){
-                Sinhvien std=new Sinhvien(
+                SinhVien std=new SinhVien(
                         resultSet.getString("MaSinhVien"),
                         resultSet.getString("HoVaTen"),
                         resultSet.getString("NgaySinh"),
@@ -66,12 +65,12 @@ public class SinhvienModify {
         }
         return studentList;
     }
-    public static void insert(Sinhvien std) {
+    public static void insert(SinhVien std) {
         String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         Connection con = null;
         PreparedStatement statement=null;
         try {
-            con = (Connection) DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=app", "sa", "123456789");
+            con = (Connection) DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=app1", "sa", "123456789");
             String sql = "insert into qlSV1(MaSinhVien,HoVaTen,NgaySinh,DiaChi,GioiTinh) values(?,?,?,?,?)";
             statement=con.prepareCall(sql);
             statement.setString(1,std.getMaSinhVien());
@@ -101,12 +100,12 @@ public class SinhvienModify {
         }
     }
     
-            public static void update(Sinhvien std) {
+            public static void update(SinhVien std) {
         String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         Connection con = null;
         PreparedStatement statement=null;
         try {
-            con = (Connection) DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=app", "sa", "123456789");
+            con = (Connection) DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=app1", "sa", "123456789");
             String sql = "update qlSV1 set MaSinhVien=?,HoVaTen=?,NgaySinh=?,DiaChi=?,GioiTinh=? where MaSinhVien=?";
             statement=con.prepareCall(sql);
             statement.setString(1,std.getMaSinhVien());
@@ -141,7 +140,7 @@ public class SinhvienModify {
         Connection con = null;
         PreparedStatement statement=null;
         try {
-            con = (Connection) DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=app", "sa", "123456789");
+            con = (Connection) DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=app1", "sa", "123456789");
             String sql = "delete from qlSV1 where MaSinhVien=?";
             statement=con.prepareCall(sql);
             
@@ -168,20 +167,20 @@ public class SinhvienModify {
         }
      }
      
-     public static List<Sinhvien> findbyMSV(String MaSinhVien) {
-        List<Sinhvien> studentList=new ArrayList<>(); 
+     public static List<SinhVien> findbyMSV(String MaSinhVien) {
+        List<SinhVien> studentList=new ArrayList<>(); 
         String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         Connection con = null;
         PreparedStatement statement=null;
         try {
-            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=app", "sa", "123456789");
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=app1", "sa", "123456789");
             String sql = "select * from qlSV1 where MaSinhVien=?";
             statement=con.prepareCall(sql);
             statement.setString(1,MaSinhVien);
             
             ResultSet resultSet=statement.executeQuery();
             while(resultSet.next()){
-                Sinhvien std=new Sinhvien(
+                SinhVien std=new SinhVien(
                         resultSet.getString("MaSinhVien"),
                         resultSet.getString("HoVaTen"),
                         resultSet.getString("NgaySinh"),
