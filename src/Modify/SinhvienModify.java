@@ -6,6 +6,7 @@
 package Modify;
 
 import Class.Sinhvien;
+import Class.Sinhvien;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;

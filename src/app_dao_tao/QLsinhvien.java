@@ -5,6 +5,7 @@
  */
 package app_dao_tao;
 
+
 import Class.Sinhvien;
 import Modify.SinhvienModify;
 import java.awt.event.MouseEvent;
@@ -444,7 +445,7 @@ public class QLsinhvien extends javax.swing.JFrame {
             fos = new FileOutputStream("sv.csv", true);
             
             //Lưu dữ liệu
-            for (Sinhvien diem : studentList) {
+            for (SinhVien diem : studentList) {
                 String line = diem.getFileLine();
                 byte[] b = line.getBytes("utf-8");
                 fos.write(b);
